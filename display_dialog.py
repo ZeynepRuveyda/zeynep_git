@@ -13,20 +13,19 @@ def main():
     print(char1)
     file_question = open(char1, "r")
     text_question = file_question.readlines()
-    file_answer = open(char2, 'r')
-    text_answer = file_answer.readlines()
-    time.sleep(1.5)
+    with open(char2, 'r') as file_answer:
+        text_answer = file_answer.readlines()
+        time.sleep(1.5)
 
-    for i in range(0, len(text_question)):
-        print(text_question[i].strip())
-        time.sleep(0.05*len(text_question[i].strip()))
-        try:    
-            print(text_answer[i].strip())
-            time.sleep(0.05*len(text_answer[i].strip()))
-        except IndexError:
-            pass
-    file_question.close()
-    file_answer.close()
+        for i in range(len(text_question)):
+            print(text_question[i].strip())
+            time.sleep(0.05*len(text_question[i].strip()))
+            try:    
+                print(text_answer[i].strip())
+                time.sleep(0.05*len(text_answer[i].strip()))
+            except IndexError:
+                pass
+        file_question.close()
 if __name__ == '__main__':
     main()
 
